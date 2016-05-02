@@ -1,0 +1,19 @@
+{
+  "questions":[{
+
+    "question": "quelle est le couleur du ciel",
+    "reponseUn": "bleu",
+    "reponseDeux": "gris",
+    "reponseTrois": "noir",
+    "reponseCorrect": "bleuCiel"
+  },
+    {
+
+      "question": "quant je traverse la rue",
+      "reponseUn": "feux rouge",
+      "reponseDeux": "feux orange",
+      "reponseTrois": "aucun couleur",
+      "reponseCorrect": "feux vert"
+
+    }]
+}
