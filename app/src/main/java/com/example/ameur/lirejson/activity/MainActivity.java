@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mButtonFile;
     private FloatingActionButton mFab;
     private CoordinatorLayout coordinatorLayout;
-    private Quiz mQuiz;
     ArrayList<Quiz> mquizs = new ArrayList<Quiz>();
     private int numeroQuestion = 0;
     public int score = 70;
@@ -67,10 +66,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.mButtonFile:
                 readAssetFile();
                 toFragementQuestion();
+                mButtonFile.setVisibility(View.INVISIBLE);
                 mFab.setVisibility(View.VISIBLE);
                 mResume.setVisibility(View.INVISIBLE);
                 mBfinish.setVisibility(View.INVISIBLE);
                 mImage.setVisibility(View.INVISIBLE);
+                break;
 
             case R.id.fab:
                 if (numeroQuestion >= mquizs.size()) {
@@ -81,10 +82,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     toFragementQuestion();
                     numeroQuestion++;
                     mButtonFile.setVisibility(View.INVISIBLE);
-                    break;
+
                 }
+                break;
             case R.id.mBfinish:
-                //finish();
+                finish();
+                break;
 
         }
     }
@@ -127,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             for (int i = 0; i < m_jArry.length(); i++) {
-                mQuiz = new Quiz();
+                Quiz mQuiz = new Quiz();
                 JSONObject jsonObj = m_jArry.getJSONObject(i);
 
                 mQuiz.setQuestion(jsonObj.getString("question"));
