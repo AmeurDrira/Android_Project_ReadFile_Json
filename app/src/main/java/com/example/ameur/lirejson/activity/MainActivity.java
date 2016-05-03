@@ -10,20 +10,13 @@ import android.widget.Button;
 import com.example.ameur.lirejson.R;
 import com.example.ameur.lirejson.core.Quiz;
 import com.example.ameur.lirejson.fragement.QuestionFragment;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -32,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button mButtonFile;
     private CoordinatorLayout coordinatorLayout;
-    private Quiz mQuiz = new Quiz();
+    private Quiz mQuiz;
     ArrayList<Quiz> mquizs = new ArrayList<Quiz>();
 
 
@@ -68,10 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void toFragementQuestion() {
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_layout, QuestionFragment.newInstance(mquizs.get(1)))
+                .replace(R.id.main_layout, QuestionFragment.newInstance(mquizs.get(0)))
                 .commit();
     }
-
 
 
     public String loadJSONFromAsset() {
@@ -98,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             for (int i = 0; i < m_jArry.length(); i++) {
+                mQuiz = new Quiz();
                 JSONObject jsonObj = m_jArry.getJSONObject(i);
 
                 mQuiz.setQuestion(jsonObj.getString("question"));
@@ -108,9 +101,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 mquizs.add(mQuiz);
 
+
             }
-            Log.v("Taille",mquizs.size()+"");
-            Log.v("Valeur1",mquizs.get(1).getQuestion()+"");
+            Log.v("Taille", mquizs.size() + "");
+            Log.v("Valeur0", mquizs.get(0).getQuestion() + "");
+            Log.v("Valeur1", mquizs.get(1).getQuestion() + "");
 
         } catch (JSONException e) {
             e.printStackTrace();
