@@ -2,13 +2,15 @@ package com.example.ameur.lirejson.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.ameur.lirejson.R;
 import com.example.ameur.lirejson.core.Quiz;
+import com.example.ameur.lirejson.fragement.LastFragment;
 import com.example.ameur.lirejson.fragement.QuestionFragment;
 
 import org.json.JSONArray;
@@ -23,10 +25,17 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
+    private Button mResume;
+    private Button mBfinish;
+    private ImageView mImage;
+
     private Button mButtonFile;
+    private FloatingActionButton mFab;
     private CoordinatorLayout coordinatorLayout;
     private Quiz mQuiz;
     ArrayList<Quiz> mquizs = new ArrayList<Quiz>();
+    private int numeroQuestion = 0;
+    public int score = 70;
 
 
     @Override
@@ -34,8 +43,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mResume = (Button) findViewById(R.id.mResume);
+        mResume.setOnClickListener(this);
         mButtonFile = (Button) findViewById(R.id.mButtonFile);
         mButtonFile.setOnClickListener(this);
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mFab.setOnClickListener(this);
+        mFab.setVisibility(View.INVISIBLE);
+        mBfinish = (Button) findViewById(R.id.mBfinish);
+        mBfinish.setOnClickListener(this);
+        mImage = (ImageView) findViewById(R.id.mImage);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
@@ -50,18 +67,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.mButtonFile:
                 readAssetFile();
                 toFragementQuestion();
+                mFab.setVisibility(View.VISIBLE);
+                mResume.setVisibility(View.INVISIBLE);
+                mBfinish.setVisibility(View.INVISIBLE);
+                mImage.setVisibility(View.INVISIBLE);
 
-                mButtonFile.setVisibility(View.INVISIBLE);
-                break;
-
+            case R.id.fab:
+                if (numeroQuestion >= mquizs.size()) {
+                    toLastFragement();
+                    mBfinish.setVisibility(View.VISIBLE);
+                    this.mFab.setVisibility(View.INVISIBLE);
+                } else {
+                    toFragementQuestion();
+                    numeroQuestion++;
+                    mButtonFile.setVisibility(View.INVISIBLE);
+                    break;
+                }
+            case R.id.mBfinish:
+                //finish();
 
         }
+    }
+
+    private void toLastFragement() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_layout, LastFragment.newInstance(score))
+                .commit();
     }
 
     private void toFragementQuestion() {
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main_layout, QuestionFragment.newInstance(mquizs.get(0)))
+                .replace(R.id.main_layout, QuestionFragment.newInstance(mquizs.get(numeroQuestion)))
                 .commit();
     }
 
@@ -103,9 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             }
-            Log.v("Taille", mquizs.size() + "");
-            Log.v("Valeur0", mquizs.get(0).getQuestion() + "");
-            Log.v("Valeur1", mquizs.get(1).getQuestion() + "");
+
 
         } catch (JSONException e) {
             e.printStackTrace();

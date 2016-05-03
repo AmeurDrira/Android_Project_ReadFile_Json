@@ -92,6 +92,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                         snackbar.show();
                         radioGroup.clearCheck();
 
+
                     } else {
                         snackbar = Snackbar
                                 .make(coordinatorLayout, "Reponse fausse", Snackbar.LENGTH_LONG);

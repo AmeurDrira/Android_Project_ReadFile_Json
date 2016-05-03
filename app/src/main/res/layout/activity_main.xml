@@ -7,27 +7,73 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".activity.MainActivity">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".activity.MainActivity">
+
+        <ImageView
+            android:id="@+id/mImage"
+            android:layout_width="wrap_content"
+            android:layout_height="1000px"
+            android:layout_gravity="top"
+            android:gravity="top"
+
+            android:maxHeight="42px"
+            android:src="@drawable/health"
+
+            />
+
+        <Button
+            android:id="@+id/mButtonFile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mImage"
+
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@android:color/holo_blue_dark"
+            android:text="Start" />
+
+        <Button
+            android:id="@+id/mResume"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mButtonFile"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@android:color/holo_blue_dark"
+            android:text="Resume" />
+
+        <Button
+            android:id="@+id/mBfinish"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mResume"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@android:color/holo_blue_dark"
+            android:text="Exit" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
 
+            android:src="@drawable/ic_arrow_forward"
+            app:backgroundTint="@color/colorNext"
+            android:layout_alignBottom="@+id/mImage"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="132dp" />
 
 
-    <Button
-        android:id="@+id/mButtonFile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Premier bouton"
-        android:background="@android:color/holo_blue_bright"
-        android:layout_gravity="bottom"/>
-
-</RelativeLayout>
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
