@@ -11,15 +11,17 @@ public class Quiz implements Serializable {
     private String reponseUn;
     private String reponseDeux;
     private String reponseTrois;
+    private String reponseQuatre;
     private String reponseCorrect;
 
     public Quiz() {
     }
 
-    public Quiz(String reponseUn, String reponseDeux, String reponseTrois, String reponseCorrect, String question) {
+    public Quiz(String reponseUn, String reponseDeux, String reponseTrois, String reponseQuatre, String reponseCorrect, String question) {
         this.reponseUn = reponseUn;
         this.reponseDeux = reponseDeux;
         this.reponseTrois = reponseTrois;
+        this.reponseQuatre = reponseQuatre;
         this.reponseCorrect = reponseCorrect;
         this.question = question;
     }
@@ -62,6 +64,14 @@ public class Quiz implements Serializable {
 
     public void setReponseCorrect(String reponseCorrect) {
         this.reponseCorrect = reponseCorrect;
+    }
+
+    public String getReponseQuatre() {
+        return reponseQuatre;
+    }
+
+    public void setReponseQuatre(String reponseQuatre) {
+        this.reponseQuatre = reponseQuatre;
     }
 }
 

@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">LireJson</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttonfinich">Exit</string>
+    <string name="buttonResume">Resume</string>
+    <string name="buttonStart">Start</string>
+    <string name="buttonconfig">Configuration</string>
+    <string name="titleconfig">Configuration</string>
+    <string name="facebook_app_id">1731309327134941</string>
+    <string name="share">Share</string>
+
+
+    <string name="q11">What is the color of the sky</string>
+    <string name="p11">Bleu</string>
+    <string name="p21">Yellow</string>
+    <string name="p31">Green</string>
+    <string name="p41">No Color</string>
+    <string name="r11">Bleu</string>
+
+    <string name="q12">When I cut the street</string>
+    <string name="p12">orage lights</string>
+    <string name="p22">green lights</string>
+    <string name="p32">red lights</string>
+    <string name="p42">bleu lights</string>
+    <string name="r12">green lights</string>
+
+    <string name="q13">What is th last tunisien film</string>
+    <string name="p13">Les frontiere du ciel</string>
+    <string name="p23">Éclipses</string>
+    <string name="p33">Lilia, une fille tunisienne</string>
+    <string name="p43">Mille feuilles</string>
+    <string name="r13">Lilia, une fille tunisienne</string>
+
+
+
+</resources>

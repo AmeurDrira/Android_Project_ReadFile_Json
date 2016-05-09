@@ -17,7 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/files'] } }
+    sourceSets {
+        main { res.srcDirs = ['src/main/res', 'src/main/res/files', 'src/main/res/values/Strings'] }
+    }
 }
 
 dependencies {
@@ -27,4 +29,5 @@ dependencies {
     compile 'com.android.support:design:23.3.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.+'
 }

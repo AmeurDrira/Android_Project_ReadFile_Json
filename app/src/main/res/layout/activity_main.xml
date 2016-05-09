@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/mImage"
             android:layout_width="wrap_content"
-            android:layout_height="1000px"
+            android:layout_height="500px"
             android:layout_gravity="top"
             android:gravity="top"
 
@@ -37,9 +37,9 @@
             android:layout_below="@id/mImage"
 
             android:layout_gravity="bottom"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginTop="150px"
             android:background="@android:color/holo_blue_dark"
-            android:text="Start" />
+            android:text="@string/buttonStart" />
 
         <Button
             android:id="@+id/mResume"
@@ -49,17 +49,31 @@
             android:layout_gravity="bottom"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@android:color/holo_blue_dark"
-            android:text="Resume" />
+            android:text="@string/buttonResume" />
 
         <Button
             android:id="@+id/mBfinish"
+            android:text="@string/buttonfinich"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/mResume"
             android:layout_gravity="bottom"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@android:color/holo_blue_dark"
-            android:text="Exit" />
+            />
+
+        <Button
+            android:id="@+id/Config"
+            android:text="@string/buttonconfig"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mBfinish"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@android:color/holo_blue_dark"
+            />
+       
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

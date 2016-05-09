@@ -1,30 +1,28 @@
 {
-  "questions":[
+  "questions": [
     {
-
-    "question": "quelle est le couleur du ciel",
-    "reponseUn": "bleu",
-    "reponseDeux": "gris",
-    "reponseTrois": "noir",
-    "reponseCorrect": "bleuCiel"
-  },
-    {
-
-      "question": "quant je traverse la rue",
-      "reponseUn": "feux rouge",
-      "reponseDeux": "feux orange",
-      "reponseTrois": "aucun couleur",
-      "reponseCorrect": "feux vert"
-
+      "question": "q11",
+      "reponseUn": "p11",
+      "reponseDeux": "p21",
+      "reponseTrois": "p31",
+      "reponseQuatre": "p41",
+      "reponseCorrect": "r11"
     },
     {
-
-      "question": "Quel est Le dernier film tunisien  ",
-      "reponseUn": "Les frontiere du ciel",
-      "reponseDeux": "Éclipses",
-      "reponseTrois": "aucun couleur",
-      "reponseCorrect": "Lilia, une fille tunisienne"
-
+      "question": "q12",
+      "reponseUn": "p12",
+      "reponseDeux": "p22",
+      "reponseTrois": "p32",
+      "reponseQuatre": "p42",
+      "reponseCorrect": "r12"
+    },
+    {
+      "question": "q13",
+      "reponseUn": "p13",
+      "reponseDeux": "p23",
+      "reponseTrois": "p33",
+      "reponseQuatre": "p43",
+      "reponseCorrect": "r13"
     }
   ]
 }

@@ -23,6 +23,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     private RadioButton radioButton, radioButton2, radioButton3, radioButton4, radioGenderButton = null;
     private Button mButtonR;
 
+
     public QuestionFragment() {
 
     }
@@ -36,25 +37,31 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
     private TextView mQuestion;
     Snackbar snackbar;
     int i = 0;
+    String reponseCorrect;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question, container, false);
+        //changeContextQuestion();
+
+
         mQuestion = (TextView) view.findViewById(R.id.mQuestion);
-        mQuestion.setText(mquiz.getQuestion());
+        int res = getResources().getIdentifier(mquiz.getQuestion(), "string", getContext().getPackageName());
+        mQuestion.setText(String.valueOf(getResources().getString(res)));
+
 
         radioButton = (RadioButton) view.findViewById(R.id.radioButton);
-        radioButton.setText(mquiz.getReponseUn());
+        radioButton.setText(String.valueOf(getResources().getString(getResources().getIdentifier(mquiz.getReponseUn(), "string", getContext().getPackageName()))));
 
         radioButton2 = (RadioButton) view.findViewById(R.id.radioButton2);
-        radioButton2.setText(mquiz.getReponseDeux());
+        radioButton2.setText(String.valueOf(getResources().getString(getResources().getIdentifier(mquiz.getReponseDeux(), "string", getContext().getPackageName()))));
 
         radioButton3 = (RadioButton) view.findViewById(R.id.radioButton3);
-        radioButton3.setText(mquiz.getReponseTrois());
+        radioButton3.setText(String.valueOf(getResources().getString(getResources().getIdentifier(mquiz.getReponseTrois(), "string", getContext().getPackageName()))));
 
         radioButton4 = (RadioButton) view.findViewById(R.id.radioButton4);
-        radioButton4.setText(mquiz.getReponseCorrect());
+        radioButton4.setText(String.valueOf(getResources().getString(getResources().getIdentifier(mquiz.getReponseQuatre(), "string", getContext().getPackageName()))));
 
         coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id
                 .coordinatorLayout);
@@ -64,6 +71,9 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
 
         return view;
+    }
+
+    private void changeContextQuestion() {
     }
 
 
@@ -84,8 +94,10 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
 
                     snackbar.show();
                 } else {
-                    reponse = (String) radioGenderButton.getText().toString();
-                    if (mquiz.getReponseCorrect().equals(reponse)) {
+                    reponse = radioGenderButton.getText().toString();
+                    reponseCorrect = String.valueOf(getResources().getString(getResources().getIdentifier(mquiz.getReponseCorrect(), "string", getContext().getPackageName())));
+
+                    if (reponseCorrect.equals(reponse)) {
                         snackbar = Snackbar
                                 .make(coordinatorLayout, "Bravo", Snackbar.LENGTH_LONG);
 
@@ -102,6 +114,7 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                     }
 
                 }
+                break;
         }
     }
 }
