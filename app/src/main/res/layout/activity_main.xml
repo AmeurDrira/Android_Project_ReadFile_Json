@@ -67,27 +67,39 @@
             android:text="@string/buttonconfig"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/mBfinish"
+            android:layout_below="@id/mButtonFile"
             android:layout_gravity="bottom"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:background="@android:color/holo_blue_dark"
             />
-       
+        <Button
+            android:id="@+id/shareFb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Config"
+            android:layout_marginTop="50dp"
+            android:text="@string/sharefb"/>
+        <Button
+            android:id="@+id/shareG"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/Config"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:text="@string/shareG"
+            />
+
 
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
+            android:layout_gravity="right"
             android:src="@drawable/ic_arrow_forward"
-            app:backgroundTint="@color/colorNext"
             android:layout_alignBottom="@+id/mImage"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="132dp" />
-
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

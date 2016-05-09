@@ -7,10 +7,10 @@
     <string name="buttonResume">Resume</string>
     <string name="buttonStart">Start</string>
     <string name="buttonconfig">Configuration</string>
-    <string name="titleconfig">Configuration</string>
+    <string name="titleconfig">Configuration Languge</string>
     <string name="facebook_app_id">1731309327134941</string>
-    <string name="share">Share</string>
-
+    <string name="sharefb">Share With FB</string>
+    <string name="shareG">Share With Google+</string>
 
     <string name="q11">What is the color of the sky</string>
     <string name="p11">Bleu</string>

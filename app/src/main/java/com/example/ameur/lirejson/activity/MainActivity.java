@@ -1,13 +1,13 @@
 package com.example.ameur.lirejson.activity;
 
 import android.content.Intent;
-import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,8 +17,10 @@ import com.example.ameur.lirejson.core.Quiz;
 import com.example.ameur.lirejson.fragement.ConfigFragment;
 import com.example.ameur.lirejson.fragement.LastFragment;
 import com.example.ameur.lirejson.fragement.QuestionFragment;
+import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +29,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBfinish;
     private Button mConfig;
     private ImageView mImage;
+    private Button mShareFb;
+    private Button mShareG;
+    private CallbackManager callbackManager;
+    private ShareDialog shareDialog;
 
 
     private Button mButtonFile;
@@ -52,7 +57,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        readAssetFile();
+        facebookSDKInitialize();
+
+
+        mShareFb = (Button) findViewById(R.id.shareFb);
+        mShareFb.setOnClickListener(this);
+
+        mShareG = (Button) findViewById(R.id.shareG);
+        mShareG.setOnClickListener(this);
+        shareDialog = new ShareDialog(this);  // intialize facebook shareDialog.
 
 
         mResume = (Button) findViewById(R.id.mResume);
@@ -70,8 +84,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
+        mResume.setVisibility(View.INVISIBLE);
+        mBfinish.setVisibility(View.INVISIBLE);
 
+    }
 
+    private void facebookSDKInitialize() {
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
     }
 
 
@@ -79,14 +99,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.mButtonFile:
-                readAssetFile();
-                toFragementQuestion();
+
+
                 mButtonFile.setVisibility(View.INVISIBLE);
                 mFab.setVisibility(View.VISIBLE);
                 mResume.setVisibility(View.INVISIBLE);
                 mBfinish.setVisibility(View.INVISIBLE);
                 mImage.setVisibility(View.INVISIBLE);
                 mConfig.setVisibility(View.INVISIBLE);
+                mShareFb.setVisibility(View.INVISIBLE);
+                mShareG.setVisibility(View.INVISIBLE);
+
+                toFragementQuestion();
+
                 break;
 
             case R.id.fab:
@@ -94,10 +119,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     toLastFragement();
                     mBfinish.setVisibility(View.VISIBLE);
                     mFab.setVisibility(View.INVISIBLE);
+
                 } else {
-                    toFragementQuestion();
-                    numeroQuestion++;
+
+
                     mButtonFile.setVisibility(View.INVISIBLE);
+
+                    toFragementQuestion();
+
+
 
                 }
                 break;
@@ -107,8 +137,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.Config:
                 launchConfig();
                 break;
+            case R.id.shareFb:
+                sharefb();
+                break;
+            case R.id.shareG:
+               // shareG();
+                break;
 
 
+        }
+    }
+
+    /*private void shareG() {
+
+        Intent shareIntent = new PlusShare.Builder(this)
+                .setType("text/plain")
+                .setText("Welcome to the Google+ platform.")
+                .setContentUrl(Uri.parse("https://developers.google.com/+/"))
+                .getIntent();
+
+        startActivityForResult(shareIntent, 0);
+    }*/
+
+    private void sharefb() {
+
+        if (ShareDialog.canShow(ShareLinkContent.class)) {
+            ShareLinkContent linkContent = new ShareLinkContent.Builder()
+                    .setContentTitle("QUIZZ SHARE")
+                    .setImageUrl(Uri.parse("http://previews.123rf.com/images/vectorikart/vectorikart1411/vectorikart141100002/33142849-Conceptual-flat-icon-of-brain-and-idea-in-the-form-of-light-bulb-with-soft-shadow-on-a-blue-backgrou-Stock-Vector.jpg"))
+                    .setContentDescription(
+                            "simple share")
+                    .build();
+
+            shareDialog.show(linkContent);  // Show facebook ShareDialog
         }
     }
 
@@ -129,6 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main_layout, QuestionFragment.newInstance(mquizs.get(numeroQuestion)))
                 .commit();
+        numeroQuestion++;
     }
 
 

@@ -7,9 +7,10 @@
     <string name="buttonResume">Continuer</string>
     <string name="buttonStart">Commencer</string>
     <string name="buttonconfig">Configuration</string>
-    <string name="titleconfig">Configuration</string>
+    <string name="titleconfig">Configuration De Langue</string>
     <string name="facebook_app_id">1731309327134941</string>
-    <string name="share">Partager</string>
+    <string name="sharefb">Partager avec FB</string>
+    <string name="shareG">Partage avec Google+</string>
 
 
 
